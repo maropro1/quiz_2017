@@ -15,7 +15,7 @@ router.get('/help', function(req, res, next) {
     res.render('help');
 });
 
-router.get('/quizzes/random_play', function(req, res, next) {
+router.get('/random_play', function(req, res, next) {
     res.render('random_play');
 });
 
