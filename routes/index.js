@@ -19,5 +19,23 @@ router.get('/quizzes/random_play', function(req, res, next) {
     res.render('quizzes/random_play');
 });
 
+// Autoload de rutas que usen :quizId
+router.param('quizId', quizController.load);
+
+
+// Definición de rutas de /quizzes
+router.get('/quizzes',                     quizController.index);
+router.get('/quizzes/:quizId(\\d+)',       quizController.show);
+router.get('/quizzes/new',                 quizController.new);
+router.post('/quizzes',                    quizController.create);
+router.get('/quizzes/:quizId(\\d+)/edit',  quizController.edit);
+router.put('/quizzes/:quizId(\\d+)',       quizController.update);
+router.delete('/quizzes/:quizId(\\d+)',    quizController.destroy);
+
+router.get('/quizzes/:quizId(\\d+)/play',  quizController.play);
+router.get('/quizzes/:quizId(\\d+)/check', quizController.check);
+router.get('/quizzes/randomcheck/:quizId?answer=respuesta', quizController.random_play);
+
+
 
 module.exports = router;
