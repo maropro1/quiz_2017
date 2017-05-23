@@ -19,7 +19,7 @@ if (!process.env.DATABASE_URL) {
     storage = process.env.DATABASE_STORAGE || "";
 }
 
-var sequelize = new Sequelize(url, {storage: storage});
+var sequelize = new Sequelize("sqlite:///", {storage:  "quiz.sqlite"});
 
 
 
