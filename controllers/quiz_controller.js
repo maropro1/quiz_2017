@@ -187,3 +187,8 @@ exports.check = function (req, res, next) {
         answer: answer
     });
 };
+
+exports.random_play  = function (req, res, next) {
+	var score = 0;
+	
+}
