@@ -197,3 +197,12 @@ exports.random_play = function (req, res, next) {
     });
 	
 };
+
+exports.randomcheck = function (req, res, next) {
+	var quiz = {question: "", answer: ""};
+	res.render('quizzes/random_play', {
+        quiz: quiz,
+        score: score,
+    });
+	
+};
