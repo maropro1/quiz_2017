@@ -192,14 +192,14 @@ exports.random_play = function (req, res, next) {
 	var score = 0;
 	res.render('quizzes/random_play', {
         quiz: req.quiz,
-        
+        score: score
     });
 	
 };
 
 exports.randomcheck = function (req, res, next) {
 	res.render('quizzes/random_play', {
-        quiz: req.quiz,
+        quiz: req.quiz
     });
 	
 };
