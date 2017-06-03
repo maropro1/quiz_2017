@@ -205,10 +205,7 @@ exports.random_play = function (req, res, next) {
 };
 
 exports.randomcheck = function (req, res, next) {
-	var score = 0;
-	res.render('quizzes/randomcheck', {
-		score : score,
-        quiz: req.quiz
-    });
+	var quizId = Number(req.params.quizID);
+	var respuesta = req.query.answer || '';
 	
 };
