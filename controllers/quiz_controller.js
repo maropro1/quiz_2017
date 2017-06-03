@@ -193,6 +193,7 @@ exports.random_play = function (req, res, next) {
     var score = 0;
 	var countOptions = {};
 	var answer = req.query.answer || "";
+	
     // Busquedas:
     var search = req.query.search || '';
     if (search) {
@@ -223,8 +224,9 @@ exports.random_play = function (req, res, next) {
         return models.Quiz.findAll(findOptions);
     })
     .then(function (quizzes) {
+		var rd =  Math.floor((Math.random()* quizzes.length)+1);
         res.render('quizzes/random_play', {
-            quiz: quizzes[0],
+            quiz: quizzes[rd],
             score: score,
 			answer: answer
         });
