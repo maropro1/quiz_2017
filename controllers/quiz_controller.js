@@ -247,8 +247,7 @@ exports.randomcheck = function (req, res, next) {
 		result:result,
 		answer: answer
 	});
-	
-	
- 
 };
+
+
 
