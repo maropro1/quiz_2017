@@ -225,8 +225,10 @@ exports.randomplay = function (req, res, next) {
     })
     .then(function (quizzes) {
 		var rd =  Math.floor((Math.random()* quizzes.length)+1);
+		var qz = quizzes[rd];
+		quizzes.splice(rd, 1);
         res.render('quizzes/random_play', {
-            quiz: quizzes[rd],
+            quiz: qz,
             score: score,
 			answer: answer
         });
