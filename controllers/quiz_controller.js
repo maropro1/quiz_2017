@@ -223,7 +223,7 @@ exports.random_play = function (req, res, next) {
         return models.Quiz.findAll(findOptions);
     })
     .then(function (quizzes) {
-        res.render('quizzes/random_result', {
+        res.render('quizzes/random_play', {
             quiz: quizzes[0],
             score: score,
 			answer: answer
@@ -242,7 +242,7 @@ exports.randomcheck = function (req, res, next) {
 	var result = answer.toLowerCase().trim() === req.quiz.answer.toLowerCase().trim();
 	var score = 1;
 	
-	res.render('quizzes/random_result', {
+	res.render('quizzes/random_play', {
 		quizId: quizId,
 		score: score,
 		result:result,
