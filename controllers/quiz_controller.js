@@ -205,7 +205,7 @@ exports.random_play = function (req, res, next) {
 };
 
 exports.randomcheck = function (req, res, next) {
-	res.render('quizzes/random_result', {
+	res.render('quizzes/randomcheck', {
         quiz: req.quiz
     });
 	
