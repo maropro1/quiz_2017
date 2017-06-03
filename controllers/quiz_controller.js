@@ -69,8 +69,15 @@ exports.index = function (req, res, next) {
 
 // GET /quizzes/:quizId
 exports.show = function (req, res, next) {
-
-    res.render('quizzes/show', {quiz: req.quiz});
+	
+	var quizId = Number(req.params.quizID);
+	var quiz = models.Quiz.findByID(quizId);
+	if (quiz) {
+		res.render('quizzes/show', {quiz: quiz});
+	} else {
+		next(new Error('No existe ningun quiz con id=' +quizId));
+	}
+    
 };
 
 
@@ -191,9 +198,7 @@ exports.check = function (req, res, next) {
 exports.random_play = function (req, res, next) {
 
     var score = 0;
-
-
-    res.render('quizzes/result', {
+    res.render('quizzes/random_play', {
         quiz: req.quiz,
         score : score
     });
