@@ -191,7 +191,7 @@ exports.check = function (req, res, next) {
 
 exports.randomplay = function (req, res, next) {
 
-    var score = scoret;
+    var score = i;
 	var countOptions = {};
 	var answer = req.query.answer || "";
 	
@@ -230,7 +230,7 @@ exports.randomplay = function (req, res, next) {
 		quizzes.splice(rd, 1);
         res.render('quizzes/random_play', {
             quiz: qz,
-            score: score,
+            score: i,
 			answer: answer
         });
     })
@@ -249,7 +249,7 @@ exports.randomcheck = function (req, res, next) {
 		i++;
 	}
 	var score = i;
-	scoret = i;
+	
     res.render('quizzes/random_result', {
 		quizId: id,
         quiz: req.quiz,
