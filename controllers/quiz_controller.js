@@ -2,7 +2,7 @@ var models = require("../models");
 var Sequelize = require('sequelize');
 
 var paginate = require('../helpers/paginate').paginate;
-
+var i = 0;
 // Autoload el quiz asociado a :quizId
 exports.load = function (req, res, next, quizId) {
 
@@ -190,7 +190,7 @@ exports.check = function (req, res, next) {
 
 exports.randomplay = function (req, res, next) {
 
-    var score = 0;
+    var score = i;
 	var countOptions = {};
 	var answer = req.query.answer || "";
 	
@@ -240,12 +240,14 @@ exports.randomplay = function (req, res, next) {
    
 
 exports.randomcheck = function (req, res, next) {
-	
+
 	var id = req.quiz.id;
-	var score = 1;
     var answer = req.query.answer || "";
     var result = answer.toLowerCase().trim() === req.quiz.answer.toLowerCase().trim();
-
+	if(result) {
+		i++;
+	}
+	var score = i;
     res.render('quizzes/random_result', {
 		quizId: id,
         quiz: req.quiz,
