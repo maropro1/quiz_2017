@@ -239,11 +239,13 @@ exports.randomplay = function (req, res, next) {
 
 exports.randomcheck = function (req, res, next) {
 	
+	var id = req.quiz.id;
 	var score = 1;
     var answer = req.query.answer || "";
     var result = answer.toLowerCase().trim() === req.quiz.answer.toLowerCase().trim();
 
     res.render('quizzes/random_result', {
+		quizId: id,
         quiz: req.quiz,
         respuesta: result,
         //answer: answer
