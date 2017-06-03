@@ -239,14 +239,14 @@ exports.randomplay = function (req, res, next) {
 
 exports.randomcheck = function (req, res, next) {
 	
- var answer = req.query.answer || "";
-
+	var score = 1;
+    var answer = req.query.answer || "";
     var result = answer.toLowerCase().trim() === req.quiz.answer.toLowerCase().trim();
 
     res.render('quizzes/random_result', {
         quiz: req.quiz,
-        result: result,
-        answer: answer
+        respuesta: result,
+        //answer: answer
     });
 };
 
