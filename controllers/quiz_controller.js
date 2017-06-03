@@ -191,7 +191,7 @@ exports.check = function (req, res, next) {
 exports.random_play = function (req, res, next) {
 
     var score = 0;
-	quiz = Quiz.findOne();
+	quiz = models.Quiz.findOne();
     res.render('quizzes/random_play', {
         quiz: quiz,
         score: score     
