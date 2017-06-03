@@ -3,6 +3,7 @@ var Sequelize = require('sequelize');
 
 var paginate = require('../helpers/paginate').paginate;
 var i = 0;
+var scoret = 0;
 // Autoload el quiz asociado a :quizId
 exports.load = function (req, res, next, quizId) {
 
@@ -190,7 +191,7 @@ exports.check = function (req, res, next) {
 
 exports.randomplay = function (req, res, next) {
 
-    var score = i;
+    var score = scoret;
 	var countOptions = {};
 	var answer = req.query.answer || "";
 	
@@ -248,6 +249,7 @@ exports.randomcheck = function (req, res, next) {
 		i++;
 	}
 	var score = i;
+	scoret = i;
     res.render('quizzes/random_result', {
 		quizId: id,
         quiz: req.quiz,
