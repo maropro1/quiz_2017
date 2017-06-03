@@ -248,6 +248,7 @@ exports.randomcheck = function (req, res, next) {
 		quizId: id,
         quiz: req.quiz,
         respuesta: result,
+		answer: answer,
 		score: score
         //answer: answer
     });
