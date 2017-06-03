@@ -236,8 +236,19 @@ exports.random_play = function (req, res, next) {
 
 exports.randomcheck = function (req, res, next) {
 	
-    var quizId = req.quiz;
-	var respuesta = req.quiz.answer;
+	var quizId = req.quiz.id;
+    var answer = req.query.answer || "";
+	var result = answer.toLowerCase().trim() === req.quiz.answer.toLowerCase().trim();
+	var score = 1;
+	
+	res.render('quizzes/random_result', {
+		quizId: quizId,
+		score: score,
+		result:result,
+		answer: answer
+	});
+	
+	
  
 };
 
