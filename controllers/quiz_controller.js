@@ -188,7 +188,7 @@ exports.check = function (req, res, next) {
     });
 };
 
-exports.random_play = function (req, res, next) {
+exports.randomplay = function (req, res, next) {
 
     var score = 0;
 	var countOptions = {};
