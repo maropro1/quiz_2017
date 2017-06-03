@@ -69,15 +69,8 @@ exports.index = function (req, res, next) {
 
 // GET /quizzes/:quizId
 exports.show = function (req, res, next) {
-	
-	var quizId = Number(req.params.quizID);
-	var quiz = models.Quiz.findByID(quizId);
-	if (quiz) {
-		res.render('quizzes/show', {quiz: quiz});
-	} else {
-		next(new Error('No existe ningun quiz con id=' +quizId));
-	}
-    
+
+    res.render('quizzes/show', {quiz: req.quiz});
 };
 
 
@@ -193,19 +186,4 @@ exports.check = function (req, res, next) {
         result: result,
         answer: answer
     });
-};
-
-exports.random_play = function (req, res, next) {
-
-    var score = "hola";
-    res.render('quizzes/random_play', {
-		score: score,
-        quiz: req.quiz    
-    });
-};
-
-exports.randomcheck = function (req, res, next) {
-	var quizId = Number(req.params.quizID);
-	var respuesta = req.query.answer || '';
-	
 };
