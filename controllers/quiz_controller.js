@@ -191,15 +191,51 @@ exports.check = function (req, res, next) {
 exports.random_play = function (req, res, next) {
 
     var score = 0;
-	var quiz = models.Quiz.findAll();
-    res.render('quizzes/random_play', {
-        quiz: quiz[1],
-        score: score     
+	var countOptions = {};
+
+    // Busquedas:
+    var search = req.query.search || '';
+    if (search) {
+        var search_like = "%" + search.replace(/ +/g,"%") + "%";
+
+        countOptions.where = {question: { $like: search_like }};
+    }
+
+    models.Quiz.count(countOptions)
+    .then(function (count) {
+
+        // Paginacion:
+
+        var items_per_page = 10;
+
+        // La pagina a mostrar viene en la query
+        var pageno = parseInt(req.query.pageno) || 1;
+
+        // Crear un string con el HTML que pinta la botonera de paginacion.
+        // Lo añado como una variable local de res para que lo pinte el layout de la aplicacion.
+        res.locals.paginate_control = paginate(count, items_per_page, pageno, req.url);
+
+        var findOptions = countOptions;
+
+        findOptions.offset = items_per_page * (pageno - 1);
+        findOptions.limit = items_per_page;
+
+        return models.Quiz.findAll(findOptions);
+    })
+    .then(function (quizzes) {
+        res.render('quizzes/index.ejs', {
+            quiz: quizzes[0],
+            score: score
+        });
+    })
+    .catch(function (error) {
+        next(error);
     });
 };
+   
 
 exports.randomcheck = function (req, res, next) {
-
+	
     var quizId = req.quiz;
 	var respuesta = req.quiz.answer;
  
