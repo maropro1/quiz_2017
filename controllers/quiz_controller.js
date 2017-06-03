@@ -192,7 +192,7 @@ exports.random_play = function (req, res, next) {
 
     var score = 0;
 	var countOptions = {};
-	var answer = req.query.answer || '';
+	var answer = req.query.answer || "";
     // Busquedas:
     var search = req.query.search || '';
     if (search) {
