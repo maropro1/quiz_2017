@@ -223,7 +223,7 @@ exports.random_play = function (req, res, next) {
         return models.Quiz.findAll(findOptions);
     })
     .then(function (quizzes) {
-        res.render('quizzes/random_play', {
+        res.render('quizzes/random_result', {
             quiz: quizzes[0],
             score: score,
 			answer: answer
