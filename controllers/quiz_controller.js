@@ -248,6 +248,7 @@ exports.randomcheck = function (req, res, next) {
 		quizId: id,
         quiz: req.quiz,
         respuesta: result,
+		score: score
         //answer: answer
     });
 };
