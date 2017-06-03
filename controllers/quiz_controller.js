@@ -193,7 +193,7 @@ exports.random_play = function (req, res, next) {
     var score = 0;
 	var quiz = models.Quiz.findAll();
     res.render('quizzes/random_play', {
-        quiz[1]: quiz,
+        quiz: quiz[1],
         score: score     
     });
 };
