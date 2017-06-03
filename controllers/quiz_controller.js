@@ -191,7 +191,6 @@ exports.check = function (req, res, next) {
 exports.random_play = function (req, res, next) {
 
     var score = 0;
-	var quiz = 
     res.render('quizzes/random_play', {
         quiz: req.quiz,
         score: score     
@@ -200,7 +199,7 @@ exports.random_play = function (req, res, next) {
 
 exports.randomcheck = function (req, res, next) {
 
-    var quiz = req.quiz;
+    var quizId = req.quiz;
 	var respuesta = req.quiz.answer;
  
 };
