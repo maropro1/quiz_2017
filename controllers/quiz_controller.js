@@ -198,3 +198,10 @@ exports.random_play = function (req, res, next) {
     });
 };
 
+exports.randomcheck = function (req, res, next) {
+
+    var quizId = req.quiz.id;
+	var respuesta = req.quiz.answer;
+ 
+};
+
