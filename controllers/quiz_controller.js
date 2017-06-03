@@ -191,17 +191,7 @@ exports.check = function (req, res, next) {
 exports.random_play = function (req, res, next) {
 
     var score = 0;
-	models.Quiz.find()
-    .then(function (quiz) {
-        if (quiz) {
-            var quiz = quiz;
-        } else {
-            throw new Error('No existe ningún quiz con id=' + quizId);
-        }
-    })
-    .catch(function (error) {
-        next(error);
-    });
+	var quiz = models.Quiz.find();
     res.render('quizzes/random_play', {
         quiz: quiz,
         score: score     
