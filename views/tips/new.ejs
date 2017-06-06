@@ -1,14 +1,35 @@
 
 
-<form method="POST" action="/quizzes/<%= quiz.id %>/tips/">
+<ul>
+    <% for (var i in tips) { %>
+        <% var tip = tips[i]; %>
 
-    <div class="wideRow">
+        <% var accepted = tip.accepted; %>
+        <% var isAdmin = session.user && session.user.isAdmin; %>
+        <% var isQuizAuthor = session.user && quizAuthorId && quizAuthorId === session.user.id; %>
 
-        <span class="itemNarrow">Nueva pista:</span>
+        <% if (accepted || isAdmin || isQuizAuthor) { %>
 
-    <input type="text" class="itemWide" id="tip" name="text" value="" placeholder="Pista" autocomplete="off" />
+            <li>
+                <%= tip.text %>
 
-    <button type="submit" class="itemNarrow">Añadir</button>
-    </div>
+                <% if (!accepted && (isAdmin || isQuizAuthor)) { %>
 
-</form>
+                      <a href="/quizzes/<%= quizId %>/tips/<%= tip.id %>/accept?_method=PUT">
+                          <button>Aceptar</button>
+                      </a>
+
+                <% } %>
+
+                <% if (isAdmin || isQuizAuthor) { %>
+
+                      <a href="/quizzes/<%= quizId %>/tips/<%= tip.id %>?_method=DELETE">
+                           <button>Borrar</button>
+                      </a>
+
+                <% } %>
+             </li>
+         <% } %>
+
+    <% } %>
+</ul>
